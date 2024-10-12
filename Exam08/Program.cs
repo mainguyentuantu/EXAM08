@@ -84,9 +84,23 @@
 
 #region baitap04
 
-// //input
-// List<int> lstNumber = new List<int> { 1, 1, 1, 2, 2, 3 };
-// //output
+//input
+List<int> lstNumber =[ 1, 1, 1, 2, 2, 3 ];
+//output
+//process
+Dictionary<int, int> dic = [];
+// 1,1,2,3
+for (int i = 0; i < lstNumber.Count ; i++){
+    if(dic.ContainsKey(lstNumber[i])) {
+        dic[lstNumber[i]]++;
+    }
+    else dic[lstNumber[i]] = 1;
+}
+
+Console.WriteLine("Nhap k: ");
+int k = Convert.ToInt32(Console.ReadLine());
+var result = dic.OrderByDescending(x => x.Value).Take(k).Select(x => x.Key).ToList();
+Console.WriteLine($"[{string.Join(", ", result)}]");
 
 
 #endregion
